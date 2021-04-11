@@ -23,6 +23,10 @@ export default function Player() {
     player.current.play()
   }
 
+  const ended = () => {
+    setIsPlay(false)
+  }
+
   return (
     <div className="player-container">
       <div className="background"></div>
@@ -32,8 +36,14 @@ export default function Player() {
       >
         <img src={imgUrl}/>
       </div>
-      <audio ref={player} src={musicUrl}>浏览器不支持音频播放</audio>
-      <Progress />
+      <audio 
+        ref={player} 
+        src={musicUrl}
+        onEnded={ended}
+      >
+        浏览器不支持音频播放
+      </audio>
+      <Progress player={player}/>
       <ControlBar 
         isPlay={isPlay}
         stop={stop}
