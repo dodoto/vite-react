@@ -83,4 +83,12 @@
   font-size: .6rem;
 }
 
+@media screen and (min-width:500px) {
+  .cover {
+    width: 2rem;
+    height: 2rem;
+    margin: 20px auto;
+  }
+}
+
 

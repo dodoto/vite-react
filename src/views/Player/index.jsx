@@ -5,7 +5,7 @@ import ControlBar from './component/ControlBar'
 
 const imgUrl = 'https://pic2.zhimg.com/v2-965a81075317d91f55cda3652859f3bb_r.jpg?source=1940ef5c'
 
-const musicUrl = 'https://m10.music.126.net/20210409173105/e4f50a09828597d80a1d8b02cd95f94b/ymusic/5d03/d39b/e0dc/841583a37950c7b1314f258e123aa54f.mp3'
+const musicUrl = 'https://m10.music.126.net/20210411224018/61753ed278d11a29f95a18ff84035a83/ymusic/5d03/d39b/e0dc/841583a37950c7b1314f258e123aa54f.mp3'
 
 export default function Player() {
 
