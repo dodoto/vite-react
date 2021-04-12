@@ -1,11 +1,30 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import './style.css'
-import Progress  from './component/Progress'
 import ControlBar from './component/ControlBar'
 
 const imgUrl = 'https://pic2.zhimg.com/v2-965a81075317d91f55cda3652859f3bb_r.jpg?source=1940ef5c'
 
-const musicUrl = 'https://m10.music.126.net/20210411224018/61753ed278d11a29f95a18ff84035a83/ymusic/5d03/d39b/e0dc/841583a37950c7b1314f258e123aa54f.mp3'
+const musicUrl = [
+  
+]
+
+const data = [
+  {
+    imgUrl: 'http://bl.talelin.com/images/music.1.png',
+    musicUrl: 'http://music.163.com/song/media/outer/url?id=317245.mp3',
+    title: '杨千嬅 -- xxxxx'
+  },
+  {
+    imgUrl: 'http://bl.talelin.com/images/music.5.png',
+    musicUrl: 'http://music.163.com/song/media/outer/url?id=26427662.mp3',
+    title: '好妹妹 -- 一个人的北京'
+  },
+  {
+    imgUrl: 'http://bl.talelin.com/images/music.7.png',
+    musicUrl: 'http://music.163.com/song/media/outer/url?id=393926.mp3',
+    title: '纯音乐 -- 风之谷'
+  }
+]
 
 export default function Player() {
 
@@ -13,23 +32,45 @@ export default function Player() {
 
   const [isPlay,setIsPlay] = useState(false)
 
-  const stop = () => {
+  const [songIndex,setSongIndex] = useState(0)
+
+  const stop = _ => {
     setIsPlay(false)
-    player.current.pause()
   }
 
-  const resume = () => {
+  const resume = _ => {
     setIsPlay(true)
-    player.current.play()
   }
 
-  const ended = () => {
-    setIsPlay(false)
+  const next = _ => {
+    if(songIndex === data.length - 1) {
+      setSongIndex(0)
+    }else{
+      setSongIndex(songIndex + 1)
+    }
   }
+
+  const prev = _ => {
+    if(songIndex === 0) {
+      setSongIndex(data.length - 1)
+    }else{
+      setSongIndex(songIndex - 1)
+    }
+  }
+
+  const song = data[songIndex]
+
+  const musicUrl = song['musicUrl']
+
+  const imgUrl = song['imgUrl']
+
+  const title = song['title']
+
+  useEffect(_ => document.title = title,[songIndex])
 
   return (
     <div className="player-container">
-      <div className="background"></div>
+      <div className="background" style={{backgroundImage:`url(${imgUrl})`}}></div>
       <div 
         className="cover" 
         style={{animationPlayState: isPlay ? 'running' : 'paused'}}
@@ -37,17 +78,21 @@ export default function Player() {
         <img src={imgUrl}/>
       </div>
       <audio 
+        autoPlay={isPlay}
         ref={player} 
         src={musicUrl}
-        onEnded={ended}
       >
         浏览器不支持音频播放
       </audio>
-      <Progress player={player}/>
+
       <ControlBar 
+        playerRef={player}
         isPlay={isPlay}
+        currentIndex={songIndex}
         stop={stop}
         resume={resume}
+        next={next}
+        prev={prev}
       />
     </div>
   );
