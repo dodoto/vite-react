@@ -12,7 +12,7 @@ function toMinuteAndSecond(time) {
   return  minute + ':' + second 
 }
 
-export default function Progress({playerRef,isPlay,currentIndex}) {
+export default function Progress({playerRef,isPlay}) {
 
   const [playState,setPlayState] = useState({currentTime:0,buffered:0,duration:0})
 
@@ -128,11 +128,6 @@ export default function Progress({playerRef,isPlay,currentIndex}) {
     }
   },[isPlay,isSliding])
 
-  //切歌
-  useEffect(_ => {
-    setPlayState({currentTime:0,buffered:0,duration:0})
-  },[currentIndex])
-
   return (
     <>
       <div className="progress-bar" onClick={clickSetProgress} ref={progressBar}>
@@ -154,7 +149,6 @@ export default function Progress({playerRef,isPlay,currentIndex}) {
 }
 
 Progress.propTypes = {
-  currentIndex: PropTypes.number,
   playerRef: PropTypes.object,
   isPlay: PropTypes.bool
 }

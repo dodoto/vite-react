@@ -48,6 +48,7 @@ export default function Player() {
     }else{
       setSongIndex(songIndex + 1)
     }
+    setIsPlay(true)
   }
 
   const prev = _ => {
@@ -56,6 +57,7 @@ export default function Player() {
     }else{
       setSongIndex(songIndex - 1)
     }
+    setIsPlay(true)
   }
 
   const song = data[songIndex]
@@ -88,7 +90,6 @@ export default function Player() {
       <ControlBar 
         playerRef={player}
         isPlay={isPlay}
-        currentIndex={songIndex}
         stop={stop}
         resume={resume}
         next={next}

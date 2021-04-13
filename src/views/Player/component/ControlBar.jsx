@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Progress from './Progress'
 
-export default function ControlBar({isPlay,stop,resume,playerRef,next,prev,currentIndex}) {
+export default function ControlBar({isPlay,stop,resume,playerRef,next,prev}) {
 
   const setPlayStatus = _ => {
     if(isPlay) {
@@ -44,7 +44,6 @@ export default function ControlBar({isPlay,stop,resume,playerRef,next,prev,curre
   return (
     <div className="controlBarContainer" >
       <Progress 
-        currentIndex={currentIndex}
         isPlay={isPlay}
         playerRef={playerRef}
       />
@@ -68,7 +67,6 @@ export default function ControlBar({isPlay,stop,resume,playerRef,next,prev,curre
 }
 
 ControlBar.propTypes = {
-  currentIndex: PropTypes.number,
   playerRef: PropTypes.object,
   isPlay: PropTypes.bool,
   stop: PropTypes.func,
