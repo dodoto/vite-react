@@ -17,10 +17,11 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  filter: blur(12px);
+  filter: blur(10px);
   z-index: -1;
   background-color: rgba(141, 141, 141, 0.35);
   background-blend-mode: darken;
+  transform: scale(1.1);
 }
 
 .cover {
