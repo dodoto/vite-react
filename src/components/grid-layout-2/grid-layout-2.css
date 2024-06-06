@@ -1,0 +1,79 @@
+.layout-root {
+  min-height: 200px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background-color: black;
+  color: white;
+}
+
+.layout-root > header,
+.layout-root > footer {
+  background-color: rgb(4, 38, 66);
+}
+
+.justify-root {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
+  align-items: flex-end;
+}
+
+.justify-root label {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.justify-root input {
+  height: 40px;
+  width: 100%;
+  border: 1px solid rgb(228, 222, 222);
+  border-radius: 0.25rem;
+  text-indent: 1ch;
+}
+
+.grid-justify-content,
+.grid-justify-items {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.grid-justify-content div,
+.grid-justify-items div,
+.grid-auto-flow div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(228, 222, 222);
+  border-radius: 0.25rem;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* 网格元素水平分布方式 ps:网格尺寸小于容器尺寸*/
+.grid-justify-content {
+  justify-content: center;
+  /* align-content: center; */
+}
+
+/* 网格元素水平呈现方式 */
+.grid-justify-items {
+  justify-items: center;
+  /* align-items: center; */
+}
+
+.grid-auto-flow {
+  display: grid;
+  grid-template-columns: repeat(1, 200px);
+  grid-template-rows: repeat(2, auto);
+}
+
+.grid-auto-flow-column {
+  grid-auto-flow: column;
+}
+
+
+
+

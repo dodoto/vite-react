@@ -1,0 +1,72 @@
+.fixed {
+  position: fixed;
+  inset: 0;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.flex::before {
+  content: "";
+  display: table;
+}
+
+.default-modal {
+  composes: fixed;
+  composes: flex;
+  background-color: rgba(0, 0, 0, 0.35);
+  animation: fade 0.25s ease-in-out forwards;
+}
+
+.blur-modal {
+  composes: fixed;
+  composes: flex;
+  background-color: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(4px);
+  animation: fade 0.25s ease-in-out forwards;
+}
+
+.modal-content-container {
+  animation: scale 0.25s ease-in-out forwards;
+}
+
+.modal-remove {
+  animation: fade-reverse 0.25s ease-in-out forwards;
+}
+
+.modal-remove .modal-content-container {
+  animation: scale-reverse 0.25s ease-in-out forwards;
+}
+
+@keyframes fade {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes fade-reverse {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes scale {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-reverse {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(0);
+  }
+}

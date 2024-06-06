@@ -1,16 +1,22 @@
-* { margin:0; padding:0 }
+/* set scroll bar */
 
-html,body {height: 100%;}
-
-html {
-  font-size: 13.33vw;
+/* ::-webkit-scrollbar {
+  width: 8px;
 }
-/* 1rem = 100px */
 
-#root {
-  height: 100%;
+::-webkit-scrollbar-thumb {
+  background-color: rgb(205, 205, 205);
 }
-#root::before {
-  content: '';
-  display: table;
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(166, 166, 166);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: dark;
+} */
+
+body.open {
+  overflow: hidden;
 }

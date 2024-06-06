@@ -1,0 +1,190 @@
+.todo-app {
+  --primary-50: #EEF2F6;
+  --primary-100: #CFD9E7;
+  --primary-200: #B1C1D8;
+  --primary-300: #92A9C9;
+  --primary-400: #7491B9;
+  --primary-500: #5578AA;
+  --primary-600: #446088;
+  --primary-700: #334866;
+  --primary-800: #223044;
+  --primary-900: #111822;
+  --warm-gray-50: #FAFAF9;
+  --dark-text: #000000;
+  --light-text: #FFFFFF;
+  --muted-300: #D4D4D4;
+  --muted-400: #A3A3A3;
+  --muted-500: #737373;
+  --muted-600: #525252;
+  --blue-400: #60A5FA;
+  --blue-500: #3B82F6;
+
+  /* width: 390, height: 844 */
+  /* --size: 50;
+  --unit: calc(calc(var(--size) / 769) * 1vmin); */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  max-width: 390px;
+  max-height: 844px; 
+  background-color: var(--warm-gray-50);
+}
+
+.masthead {
+  position: relative;
+  z-index: -1;
+  box-sizing: border-box;
+  height: 300px;
+  padding-bottom: 5rem;
+  background-image: url("../../assets/masthead.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.theme-toggle-btn {
+  position: absolute;
+  top: 1.34em;
+  left: 1.34em;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  border: 0;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+.theme-toggle-btn div {
+  position: absolute;
+  inset: 0;
+}
+
+.edit-toggle-btn {
+  position: fixed;
+  bottom: 1.34em;
+  right: 1.34em;
+  width: 48px;
+  height: 48px;
+  padding: 4px;
+  border: 0;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+.edit-toggle-btn div {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+}
+
+.masthead h1 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 1.67em 0.67em;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.todo-list {
+  height: calc(100% - 300px);
+  margin-top: -20px;
+  padding: 20px 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted-300);
+}
+
+.todo-list::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+  background-color: var(--muted-300);
+}
+
+.todo-list::-webkit-scrollbar-thumb:hover {
+  background-color: var(--muted-400);
+}
+
+.todo-input-wrap {
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.todo-input-wrap input {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid var(--muted-400);
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.todo-input-wrap input:focus {
+  border-bottom-color: var(--blue-400);
+}
+
+.todo-list-item-wrap {
+  display: grid;
+  grid: 'one';
+}
+
+.todo-list-item-wrap > div:first-child {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 1rem;
+  background-color: red;
+  z-index: 0;
+}
+
+.todo-list-item-wrap > div {
+  position: relative;
+  grid-area: one;
+}
+
+.todo-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  text-align: left;
+}
+
+.todo-list-item input[type=checkbox] {
+  display: none;
+}
+
+.todo-list-item label {
+  position: relative;
+  word-break: break-word;
+}
+
+.todo-list-item svg {
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.todo-list-item label {
+  background: linear-gradient(var(--muted-400), var(--muted-400) 2px, transparent 2px, transparent);
+  background-position-y: 12px;
+  background-repeat: no-repeat;
+  background-size: 0 100%;
+}
+
+.todo-list-item-done-text {
+  background-size: 100% 100%;
+}

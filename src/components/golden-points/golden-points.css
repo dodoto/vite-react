@@ -1,0 +1,10 @@
+#golden-points {
+  width: 100vw;
+  height: 100vh;
+}
+
+#point-radius {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
