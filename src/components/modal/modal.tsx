@@ -26,9 +26,7 @@ export const Modal: FC<ModalProps> = memo(({ type = "default", modalColor, child
 
   const close = () => {
     modal.current!.classList.add(styles["modal-remove"]);
-    setTimeout(() => {
-      onClose && onClose();
-    }, 300);
+    onOutsideClick?.();
   };
 
   useEffect(() => {
@@ -43,7 +41,7 @@ export const Modal: FC<ModalProps> = memo(({ type = "default", modalColor, child
     createPortal(
       <div
         ref={modal}
-        onClick={onOutsideClick}
+        onClick={close}
         className={styles[`${type}-modal`]}
         style={{ backgroundColor: modalColor }}>
         {/* <ModalContainer children={children} onClose={close} /> */}
