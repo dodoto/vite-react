@@ -1,5 +1,5 @@
 import { CSSProperties, memo, FC, useRef, cloneElement, useState, useEffect } from "react";
-import { Box, IconButton, Text, FormControl, FormHelperText } from "@chakra-ui/react";
+import { Box, IconButton, Text, FormControl, FormHelperText, Card, CardBody, VStack, CardHeader, Heading } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons";
 import { createPortal } from "react-dom";
 import styles from "./modal.module.css";
@@ -15,7 +15,7 @@ type ModalProps = {
 export const ModalContainer: FC<Pick<ModalProps, "children" | "onClose">> = memo(({ children, onClose }) => {
   return (
     <div className={styles["modal-content-container"]}>
-      { cloneElement(children, { onClose }) }
+      {cloneElement(children, { onClose })}
     </div>
   );
 });
@@ -41,13 +41,27 @@ export const Modal: FC<ModalProps> = memo(({ type = "default", modalColor, child
 
   return (
     createPortal(
-      <div 
+      <div
         ref={modal}
         onClick={onOutsideClick}
-        className={styles[`${type}-modal`]} 
+        className={styles[`${type}-modal`]}
         style={{ backgroundColor: modalColor }}>
-          {/* <ModalContainer children={children} onClose={close} /> */}
-          {children}
+        {/* <ModalContainer children={children} onClose={close} /> */}
+        <ModalContainer children={
+          <VStack justify="center" h="full">
+            <Card maxW="500px" mt="-140px" pt="80px">
+              <CardHeader>
+                <Heading>hello world</Heading>
+              </CardHeader>
+              <CardBody>
+                <Text>
+                  this is a site for trying some node modules by react
+                </Text>
+              </CardBody>
+            </Card>
+          </VStack>
+        } />
+        {children}
       </div>,
       document.body,
     )
@@ -59,7 +73,7 @@ export const Dialog: FC<Pick<ModalProps, 'onClose'>> = ({ onClose }) => {
   return (
     <Box h="full" mt="24">
       <Box p="6" display="flex" gap="6" flexDirection="column" w="100vh" maxW="500px" bg="white" rounded="lg" shadow="lg" border="1px" borderColor="gray.300">
-        <IconButton alignSelf="end" bg="transparent" aria-label="Close" icon={<CloseIcon color="gray.400"/>} onClick={onClose} />
+        <IconButton alignSelf="end" bg="transparent" aria-label="Close" icon={<CloseIcon color="gray.400" />} onClick={onClose} />
         <Box>
           <Text>dialog</Text>
         </Box>
@@ -88,15 +102,15 @@ export const NDialog: FC<Pick<ModalProps, 'onClose'>> = ({ onClose }) => {
         <Box>
           <FormControl>
             <FormHelperText>L: {L}%</FormHelperText>
-            <input type="range" max="100" min="0" value={L} onChange={(e) => setL(parseInt(e.target.value))}/>
+            <input type="range" max="100" min="0" value={L} onChange={(e) => setL(parseInt(e.target.value))} />
           </FormControl>
           <FormControl>
             <FormHelperText>C: {C / 100}</FormHelperText>
-            <input type="range" max="100" min="0" value={C} onChange={(e) => setC(parseInt(e.target.value))}/>            
+            <input type="range" max="100" min="0" value={C} onChange={(e) => setC(parseInt(e.target.value))} />
           </FormControl>
           <FormControl>
             <FormHelperText>H: {H}</FormHelperText>
-            <input type="range" max="360" min="0" value={H} onChange={(e) => setH(parseInt(e.target.value))}/>            
+            <input type="range" max="360" min="0" value={H} onChange={(e) => setH(parseInt(e.target.value))} />
           </FormControl>
         </Box>
         <Box style={style} w="48" h="48"></Box>

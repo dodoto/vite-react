@@ -16,7 +16,7 @@ type Props = {
   size?: number;
   url?: string;
 };
-
+// 0 1px 3px 0 rgba(0, 0, 0, 0.1),0 1px 2px 0 rgba(0, 0, 0, 0.06)
 export default memo(function SquircleAvatar({ size = 40, url }: Props) {
   const hasUrl = !!url;
 
@@ -31,7 +31,12 @@ export default memo(function SquircleAvatar({ size = 40, url }: Props) {
           </pattern>
         </defs>
       }
+      {/* <filter id="shadow">
+        <feDropShadow dx="0" dy="1" stdDeviation="12" floodColor="#000" floodOpacity="0.1" />
+      </filter> */}
+      {/* <g filter="url(#shadow)"> */}
         <path d="M100,200c43.8,0,68.2,0,84.1-15.9C200,168.2,200,143.8,200,100s0-68.2-15.9-84.1C168.2,0,143.8,0,100,0S31.8,0,15.9,15.9C0,31.8,0,56.2,0,100s0,68.2,15.9,84.1C31.8,200,56.2,200,100,200z" fill={ hasUrl ? `url(#squircle-${url})` : fill } />
+        {/* </g> */}
     </svg>
   );
 });

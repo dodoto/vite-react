@@ -17,6 +17,6 @@
   scrollbar-color: dark;
 } */
 
-body.open {
+body.modal-open {
   overflow: hidden;
 }
